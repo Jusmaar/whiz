@@ -1,0 +1,684 @@
+/* RESET */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+code,
+em,
+img,
+small,
+strong,
+sub,
+sup,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+time,
+audio,
+video {
+  background-color: transparent;
+  border: 0;
+  font-size: 100%;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+}
+
+html {
+  font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+  box-sizing: border-box;
+  height: 100%;
+  line-height: 1.15;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  background-repeat: no-repeat;
+}
+
+body {
+  height: 100%;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+small,
+hgroup,
+summary {
+  display: block;
+}
+
+img,
+embed,
+iframe,
+object,
+audio,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+  vertical-align: top;
+}
+
+input {
+  border-radius: 0;
+  line-height: normal;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+button,
+input,
+select,
+textarea {
+  border: 0;
+  margin: 0;
+  text-transform: none;
+}
+
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input::-ms-reveal {
+  display: none;
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+small {
+  font-size: 80%;
+}
+
+abbr,
+acronym {
+  border-bottom: 0.1em dotted;
+  cursor: help;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+  cursor: pointer;
+}
+
+label,
+input[type="file"],
+button,
+[type="button"],
+[type="reset"],
+[type="submit"],
+[role="button"] {
+  cursor: pointer;
+}
+
+[disabled] {
+  cursor: default;
+}
+
+img {
+  border-style: none;
+  max-width: 100%;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+/* COLORS */
+$white1: white;
+$black1: black;
+$overlay: rgba(0, 0, 0, 0.3411764706);
+$gray1: #202930;
+$gray2: #D8D8D8;
+$gray1-overlay: rgba(32, 41, 48, 0.8);
+$green1: #DAFF4E;
+$green2: #E4FF5F;
+$break-xsmall: 480px;
+$break-small: 576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-xlarge: 1200px;
+$break-2xlarge: 1378px;
+$container-small: 540px;
+$container-medium: 720px;
+$container-large: 960px;
+$container-xlarge: 1140px;
+
+/* MAIN LAYOUT */
+.whiz-main {
+  min-height: 100vh;
+  background: url(./assets/images/bg-whiz.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  &__app{
+    flex-grow: 1;
+  }
+}
+
+/* HEADER */
+.whiz-header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.18);
+
+  &__title {
+    color: $white1;
+
+    @media screen and (min-width: $break-medium) {
+      margin-left: 30px;
+    }
+  }
+
+  &__oval {
+    margin-left: 10px;
+  }
+}
+
+.btn-menu-mobile {
+  background: transparent;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+
+  @media screen and (min-width: $break-medium) {
+    display: none;
+  }
+}
+
+/* MENU */
+.whiz-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $overlay;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s ease;
+
+  &.active {
+    opacity: 1;
+    z-index: 0;
+
+    .whiz-menu__container {
+      transform: translateX(0);
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 295px;
+    background: $gray1-overlay;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+
+    @media screen and (min-width: $break-medium) {
+      width: 465px;
+      border-top-right-radius: 50px;
+    }
+  }
+
+  &__btn-close {
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+
+    @media screen and (min-width: $break-medium) {
+      top: 0;
+      right: 0;
+      padding: 0;
+      display: none;
+    }
+
+    &__icon {
+      height: 16px;
+      width: 16px;
+    }
+
+    &__content {
+      position: relative;
+    }
+
+    &__icon-img {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+    }
+
+    &--desktop {
+      display: none;
+
+      @media screen and (min-width: $break-medium) {
+        display: block;
+      }
+    }
+  }
+}
+
+.menu-list {
+  width: 100%;
+  margin: 0 20px;
+
+  @media screen and (min-width: $break-medium) {
+    margin: 0 65px;
+  }
+
+  &__item {
+    padding: 15px 0;
+
+    &.active {
+      @media screen and (min-width: $break-medium) {
+        border-bottom: 1px solid $gray2;
+      }
+
+      .menu-list__item__link {
+        color: $green1;
+      }
+    }
+
+    &__link {
+      font-size: 18px;
+      color: $white1;
+      text-decoration: none;
+    }
+
+    &__img {
+      width: 50px;
+      display: none;
+
+      @media screen and (min-width: $break-medium) {
+        display: block;
+      }
+    }
+  }
+}
+
+/* HOME */
+.whiz-home {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  &__title {
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.4;
+    color: $white1;
+    padding: 0 40px 30px 0;
+    border-bottom: 1px solid $white1;
+    font-size: 25px;
+    font-weight: bold;
+
+    @media screen and (min-width: $break-medium) {
+      text-align: left;
+      padding: 0 100px 30px 0;
+      font-size: 35px;
+    }
+
+    &__secondary {
+      font-weight: initial;
+
+      @media screen and (min-width: $break-medium) {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+/* FIXED */
+.whiz-fixed {
+  outline: none;
+  padding: 10px;
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 40%;
+  left: 0;
+  background: $white1;
+  border-top-right-radius: 50px;
+  width: 125px;
+  height: 150px;
+  transition: all 0.3s ease;
+
+  @media screen and (min-width: $break-medium) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &:hover {
+    background: $green2;
+    width: 195px;
+
+    .whiz-fixed__title {
+      display: block;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 18px;
+    margin-right: 5px;
+    display: none;
+  }
+}
+
+/* SERVICES */
+.whiz-services {
+  max-width: $container-xlarge;
+  margin: 0 auto;
+  min-height: calc( 80vh - 50px );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+    text-align: center;
+    color: $white1;
+    font-weight: bold;
+    font-size: 18px;
+
+    @media screen and (min-width: $break-medium) {
+      font-weight: initial;
+      font-size: 30px;
+    }
+  }
+
+  &__card-box {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: $break-medium) {
+      margin-top: 5%;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
+
+.card-service {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  position: relative;
+
+  @media screen and (min-width: $break-medium) {
+    padding: 50px;
+  }
+
+  &::after {
+    @media screen and (min-width: $break-medium) {
+      content: '';
+      position: absolute;
+      border-left: 2px solid white;
+      height: 150px;
+      right: 0;
+      top: 25%;
+    }
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $break-medium) {
+      width: 400px;
+    }
+
+    &__btn {
+      outline: none;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      width: 300px;
+      padding: 15px 40px;
+      background: transparent;
+      border-radius: 45px;
+      border: 2px solid $white1;
+      font-size: 18px;
+      font-weight: bold;
+      color: $white1;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $white1;
+        color: $black1;
+      }
+    }
+
+    &__extra {
+      font-size: 14px;
+      color: $white1;
+      font-weight: bold;
+    }
+  }
+
+  &__detail {
+    @media screen and (min-width: $break-medium) {
+      width: 400px;
+    }
+
+    &__title {
+      color: $white1;
+
+      @media screen and (min-width: $break-medium) {
+        font-size: 24px;
+      }
+    }
+
+    &__description {
+      color: $white1;
+      font-size: 12px;
+      margin: 15px 0;
+
+      @media screen and (min-width: $break-medium) {
+        font-size: 16px;
+      }
+    }
+
+    &__list {
+      color: $white1;
+
+      @media screen and (min-width: $break-medium) {
+        font-size: 16px;
+      }
+
+      &--secondary {
+        margin: 5px 20px;
+      }
+    }
+  }
+}
+
+/* FOOTER */
+.whiz-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 15px 0;
+
+  @media screen and (min-width: $break-medium) {
+    flex-direction: row;
+  }
+
+  &__logo {
+    @media screen and (min-width: $break-medium) {
+      margin-left: 30px;
+    }
+  }
+
+  &__contact {
+    @media screen and (min-width: $break-medium) {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__text {
+      margin: 10px 20px;
+      font-size: 12px;
+      text-align: center;
+      color: $white1;
+
+      @media screen and (min-width: $break-medium) {
+        font-size: 14px;
+      }
+
+      &--whiz {
+        color: $green2;
+      }
+    }
+  }
+
+  &__social {
+    @media screen and (min-width: $break-medium) {
+      margin-right: 30px;
+    }
+
+    &__img {
+      height: 16px;
+
+      @media screen and (min-width: $break-medium) {
+        height: 20px;
+      }
+    }
+  }
+}

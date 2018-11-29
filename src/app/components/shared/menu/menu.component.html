@@ -1,0 +1,33 @@
+<div class="whiz-menu" [ngClass]="{'active': showMenuBool}">
+  <nav class="whiz-menu__container">
+    <ul class="menu-list">
+      <li class="menu-list__item">
+        <img class="menu-list__item__img" src="../../../../assets/images/icon1.png" alt="icon1">
+      </li>
+      <li class="menu-list__item" routerLinkActive="active">
+        <a (click)="closeMenu()" class="menu-list__item__link" [routerLink]="['/home']">Sobre nosotros</a>
+      </li>
+      <li class="menu-list__item" routerLinkActive="active">
+        <a (click)="closeMenu()" class="menu-list__item__link" [routerLink]="['/services']">Servicios</a>
+      </li>
+      <li class="menu-list__item">
+        <a class="menu-list__item__link">Trabaja en Whiz </a>
+      </li>
+      <li class="menu-list__item">
+        <a class="menu-list__item__link">Contáctanos</a>
+      </li>
+      <li class="menu-list__item">
+        <a class="menu-list__item__link">Blog</a>
+      </li>
+    </ul>
+    <button class="whiz-menu__btn-close" (click)="closeMenu()">
+      <img class="whiz-menu__btn-close__icon" src="../../../../assets/images/close.png" alt="boton close">
+    </button>
+    <button class="whiz-menu__btn-close whiz-menu__btn-close--desktop" (click)="closeMenu()">
+      <div class="whiz-menu__btn-close__content">
+        <img src="../../../../assets/images/rect.png" alt="rectangle">
+        <img class="whiz-menu__btn-close__icon-img" src="../../../../assets/images/close2.png" alt="close">
+      </div>
+    </button>
+  </nav>
+</div>

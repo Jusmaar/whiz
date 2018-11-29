@@ -1,0 +1,86 @@
+<app-header-component title="Servicios"></app-header-component>
+
+<div class="whiz-services">
+  <h2 class="whiz-services__title">Conoce los servicios que ofrecemos</h2>
+  <div class="whiz-services__card-box">
+    <div class="card-service">
+      <div class="card-service__description" *ngIf="tiBool">
+        <img class="card-service__description__img" src="../../../assets/images/s1.png" alt="">
+        <button class="card-service__description__btn" (click)="showService('TI')">Desarrollo TI</button>
+        <p class="card-service__description__extra">Construye lo imposible</p>
+      </div>
+      <div class="card-service__detail" *ngIf="!tiBool">
+        <p class="card-service__detail__title">
+          Desarrollo TI
+        </p>
+        <p class="card-service__detail__description">
+          Cualquier proceso de información o comunicación puede ser digitalizado; tan sólo pregúntanos cómo.
+        </p>
+        <ul class="card-service__detail__list">
+          <li> • Desarrollo Web a medida</li>
+          <li> • Mobile Apps (nativas e hibridas en iOS y Android).
+          </li>
+          <li> • Desarrollo de sistemas de gestión interna y/ externa
+          </li>
+          <li>
+            <ul class="card-service__detail__list card-service__detail__list--secondary">
+              <li> ⁃ ERP
+              </li>
+              <li>
+                ⁃ Intranet
+              </li>
+              <li>
+                ⁃ Extranet
+              </li>
+              <li>⁃ CMS</li>
+            </ul>
+          </li>
+          <li> • Landing Page administrable y por campaña
+          </li>
+          <li> • E-Commerce
+          </li>
+          <li>
+            • Implementación de páginas webs para pequeños negocios
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-service">
+      <div class="card-service__description" *ngIf="mktBool">
+        <img class="card-service__description__img" src="../../../assets/images/s2.png" alt="">
+        <button class="card-service__description__btn" (click)="showService('MKT')">Marketing Digital</button>
+        <p class="card-service__description__extra">Imagina lo imposible</p>
+      </div>
+      <div class="card-service__detail" *ngIf="!mktBool">
+        <p class="card-service__detail__title">
+          Marketing Digital </p>
+        <p class="card-service__detail__description">
+          Toda gran marca tiene algo grande que ofrecer; emociónalos, mide los resultados y conecta con tu público.
+        </p>
+        <ul class="card-service__detail__list">
+          <li> • Influencer Marketing
+          </li>
+          <li> • Creación de Contenidos
+          </li>
+          <li> •Email Marketing
+          </li>
+          <li>
+            • Social Media Management
+
+          </li>
+          <li>
+            • Campañas en Redes sociales
+
+          </li>
+          <li>
+            • Google Adwords
+
+          </li>
+          <li>
+            • Posicionamiento SEO / SEM
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
